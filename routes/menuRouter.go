@@ -6,7 +6,7 @@ import (
 	controller "resturant-management/controllers"
 )
 
-func MenuRoutes(incomingRoutes *gin.Engine){
+func MenuRoutes(incomingRoutes *gin.RouterGroup){
 	incomingRoutes.GET("/menus", controller.GetMenus())
 	incomingRoutes.GET("/menus/:menu_id", controller.GetMenu())
 	incomingRoutes.POST("/menus", controller.CreateMenu())

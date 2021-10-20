@@ -99,7 +99,7 @@ func GetUser() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		userId := c.Param("user_id")
 
-		// check to allow user only access his data
+		// check to confirm user only access his own data
 		if err := helper.MatchUserTypeToUid(c, userId); err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 			return
@@ -152,7 +152,7 @@ func SignUp() gin.HandlerFunc {
 		defer cancel()
 		if err != nil {
 			log.Panic(err)
-			c.JSON(http.StatusInternalServerError, gin.H{"errorr": "Error occured while checking for the phone"})
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "Error occured while checking for the phone"})
 		}
 
 		if count > 0 {

@@ -23,7 +23,7 @@ func MatchUserTypeToUid(c *gin.Context, userId string) (err error){
 
 	// user can only access his own data & ensure only admin gets access
 	if userType == "USER" && uid != userId {
-		err = errors.New("Unauthorized to accedd this resource")
+		err = errors.New("Unauthorized to access this resource")
 		return err
 	}
 

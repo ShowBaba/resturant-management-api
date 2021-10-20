@@ -24,14 +24,15 @@ func main() {
 	router.Use(gin.Logger())
 	// router.Use(middleware.Authentication())
 	
-	routes.AuthRoutes(router)
-	routes.UserRoutes(router)
-	routes.FoodRoutes(router)
-	routes.MenuRoutes(router)
-	routes.TableRoutes(router)
-	routes.OrderRoutes(router)
-	routes.OrderItemRoutes(router)
-	routes.InvoiceRoutes(router)
+	v1 := router.Group("/api/v1")
+	routes.AuthRoutes(v1)
+	routes.UserRoutes(v1)
+	routes.FoodRoutes(v1)
+	routes.MenuRoutes(v1)
+	routes.TableRoutes(v1)
+	routes.OrderRoutes(v1)
+	routes.OrderItemRoutes(v1)
+	routes.InvoiceRoutes(v1)
 
 	router.GET("/api", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{"success": "Home route, see documentation for proper routing!"})
